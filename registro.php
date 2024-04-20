@@ -40,7 +40,7 @@ include ("conexion_db.php");
     <div class="contenedor">
         <h2>Regístrate en Milenio X</h2>
 
-        <form action="registro.php" method="post" onsubmit="return validar(this)">
+        <form action="registro_post.php" method="post" onsubmit="return validar(this)">
             <label for="username">Nombre:</label>
             <input type="text" name="username" required>
             <br>

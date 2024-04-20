@@ -45,9 +45,9 @@ include ("conexion_db.php");
             <input type="text" name="username">
             <br>
             <label for="password">Contraseña</label>
-            <input type="password" name="pwd" class="camp">
+            <input type="password" name="password" class="camp">
             <br>
-            <div>¿No estás registrado? Regístrate <a href="./registro.php">aquí</a></div>
+            <div>¿No estás registrado? Regístrate <a href="./registro.php"><u>aquí</u></a></div>
             <br>
             <input type="submit" name="enviar" class="camp">
         </form>
