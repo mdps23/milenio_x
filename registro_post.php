@@ -17,16 +17,16 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['passwor
     if ($conn->query($insert) === TRUE) {
         echo "Nuevo usuario registrado con éxito";
         echo "<br>";
-        echo "<a href='abm_usuario.html'>Volver</a>";
+        echo "<button><a href='./'>Volver</a></button>";
     } else {
         echo "Error al crear usuario: " . $conn->error;
         echo "<br>";
-        echo "<a href='abm_usuario.html'>Volver</a>";
+        echo "<button><a href='./registro.php'>Volver</a></button>";
     }
 } else {
     echo "Parámetros faltantes";
     echo "<br>";
-    echo "<a href='abm_usuario.html'>Volver</a>";
+    echo "<button><a href='./registro.php'>Volver</a></button>";
 }
 
 $conn->close();

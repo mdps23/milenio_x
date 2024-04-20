@@ -2,16 +2,6 @@
 
 include ("conexion_db.php");
 
-if (isset($_GET['id'])) {
-    $id_hilo = $_GET['id'];
-}
-
-$sql_tit = "SELECT * FROM threads WHERE id_thread = '$id_hilo'";
-$resultado_tit = mysqli_sql($sql_tit);
-foreach ($resultado_tit as $valor) {
-    $titulo = $valor['title'];
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +10,7 @@ foreach ($resultado_tit as $valor) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <?php echo $titulo ?>
-    </title>
+    <title>Nuevo Hilo</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
 
@@ -50,28 +38,19 @@ foreach ($resultado_tit as $valor) {
     </header>
 
     <div class="contenedor">
-        <h2>
-            <?php echo $titulo ?>
-        </h2>
+        <h2>Nuevo Hilo</h2>
 
-        <?php
-        $sql = "SELECT posts.*, users.username FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE id_thread = '$id_hilo' ORDER BY post_date ASC";
-        $resultados = mysqli_sql($sql);
-        foreach ($resultados as $valor) {
-            echo "<div class='post'>";
-            echo "<div>" . $valor['username'] . " /// " . $valor['post_date'] . "</div>";
-            echo "<p>" . $valor['content'] . "</p>";
-            echo "</div>";
-        }
-        ?>
-
-        <form action="hilo_post.php" method="post">
-            <input type="hidden" name="id_thread" value="<?php echo $id_hilo; ?>" required>
-            <input type="hidden" name="post_id_user" value="<?php echo $_SESSION['id_user']; ?>" required>
+        <form action="nuevo_hilo_post.php" method="post">
+            <label for="title">Título:</label>
+            <input type="text" name="title" required>
             <br>
-            <textarea name="post_content" rows="12" cols="72" placeholder="Insertar texto..." required></textarea>
+            <label for="id_category">Categoría:</label>
+            <input type="text" name="id_category" required>
             <br>
-            <input type="submit" value="Comentar">
+            <textarea name="content" rows="12" cols="72" placeholder="Insertar texto..." required></textarea>
+            <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>" required>
+            <br>
+            <input type="submit" value="Crear">
         </form>
 
         <button><a href="./">Volver</a></button>

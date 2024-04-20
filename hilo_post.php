@@ -1,5 +1,9 @@
 <?php
 
+include ("conexion_db.php");
+
+if ($_SESSION['logado'] == true) {
+
 $conn = new mysqli('localhost', 'admin', 'contra', 'milenio_x');
 
 if ($conn->connect_error) {
@@ -19,21 +23,27 @@ if (isset($_POST['id_thread']) && isset($_POST['post_id_user']) && isset($_POST[
         if ($conn->query($update) === TRUE) {
             echo "Post añadido con éxito";
             echo "<br>";
-            echo "<a href='abm_hilos_posts.html'>Volver</a>";
+            echo "<a href='./hilo.php?id=" . $thread . "'>Volver</a>";
         } else {
             echo "Error al actualizar hilo: " . $conn->error;
             echo "<br>";
-            echo "<a href='abm_hilos_posts.html'>Volver</a>";
+            echo "<a href='./hilo.php?id=" . $thread . "'>Volver</a>";
         }
     } else {
         echo "Error al añadir post: " . $conn->error;
         echo "<br>";
-        echo "<a href='abm_hilos_posts.html'>Volver</a>";
+        echo "<a href='./hilo.php?id=" . $thread . "'>Volver</a>";
     }
 } else {
     echo "Parámetros faltantes";
     echo "<br>";
-    echo "<a href='abm_hilos_posts.html'>Volver</a>";
+    echo "<a href='./hilo.php?id=" . $thread . "'>Volver</a>";
 }
 
 $conn->close();
+
+} else {
+    echo "Debes iniciar sesión para postear";
+    echo "<br>";
+    echo "<a href='./hilo.php?id=" . $thread . "'>Volver</a>";
+}
