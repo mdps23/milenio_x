@@ -21,7 +21,7 @@ foreach ($resultado_tit as $valor) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <?php echo $titulo ?>
+        Milenio X
     </title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
@@ -29,17 +29,20 @@ foreach ($resultado_tit as $valor) {
 <body>
     <header>
         <div class="contenedor">
-            <h1><a href="./index.php.">Milenio X</a></h1>
+            <div class="bloque-cen">
+                <a href="./index.php"><img src="img/milenio_logo_rojo.png" alt="Milenio X" width="150"></a>
+                <h1>Milenio X</h1>
+            </div>
             <nav>
                 <ul>
                     <?php if ($_SESSION['logado'] == true) { ?>
+                        <li><a href="./perfil.php">Mi Perfil</a></li>
                         <li><a href="./logout.php">Cerrar Sesión</a></li>
                     <?php } else { ?>
                         <li><a href="./registro.php">Regístrate</a></li>
                         <li><a href="./login.php">Inicia Sesión</a></li>
                     <?php } ?>
                     <li><a href="./nuevo_hilo.php">Abrir Hilo</a></li>
-                    <li><a href="#">Mapa</a></li>
                 </ul>
             </nav>
             <form action="buscar.php" method="GET">
@@ -50,17 +53,20 @@ foreach ($resultado_tit as $valor) {
     </header>
 
     <div class="contenedor">
-        <h2>
-            <?php echo $titulo ?>
-        </h2>
+        <div class="bloque-colapsable">
+            <h2>
+                <?php echo $titulo ?>
+            </h2>
+        </div>
 
         <?php
         $sql = "SELECT posts.*, users.username FROM posts INNER JOIN users ON posts.id_user = users.id_user WHERE id_thread = '$id_hilo' ORDER BY post_date ASC";
         $resultados = mysqli_sql($sql);
         foreach ($resultados as $valor) {
-            echo "<div class='post'>";
-            echo "<div>" . $valor['username'] . " /// " . $valor['post_date'] . "</div>";
-            echo "<p>" . $valor['content'] . "</p>";
+            echo "<div class='bloque-post'>";
+            echo "<div class='post-autor'>" . $valor['username'] . "</div>";
+            echo "<div class='post-contenido'><div>" . $valor['post_date'] . "</div>";
+            echo "<p>" . $valor['content'] . "</p></div>";
             echo "</div>";
         }
         ?>
@@ -72,9 +78,9 @@ foreach ($resultado_tit as $valor) {
             <textarea name="post_content" rows="12" cols="72" placeholder="Insertar texto..." required></textarea>
             <br>
             <input type="submit" value="Comentar">
+            <button><a href="./">Volver</a></button>
         </form>
 
-        <button><a href="./">Volver</a></button>
     </div>
 
     <footer>

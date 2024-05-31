@@ -51,7 +51,7 @@ include ("conexion_db.php");
                 if (isset($_GET['b'])) {
                     $termino = $_GET['b'];
 
-                    $sql = "SELECT threads.*, users.username FROM threads INNER JOIN users ON threads.id_user = users.id_user WHERE threads.title LIKE '%$termino%'";
+                    $sql = "SELECT threads.*, users.username FROM threads INNER JOIN users ON threads.id_user = users.id_user WHERE threads.id_category = '$termino'";
                     $resultados = mysqli_sql($sql);
                     foreach ($resultados as $valor) {
                         echo "<div class='bloque-lista'>";

@@ -1,7 +1,17 @@
 <?php
+session_start();
 
-$_SESSION['logado'] = false;
-$_SESSION['username'] = null;
-$_SESSION['id_user'] = null;
+$_SESSION = array();
 
-echo "<button><a href='./'>Volver</a></button>";
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+session_destroy();
+
+header("Location: index.php");
+exit;

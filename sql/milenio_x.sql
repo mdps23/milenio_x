@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-04-2024 a las 18:25:54
+-- Tiempo de generación: 31-05-2024 a las 22:05:52
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -71,7 +71,13 @@ INSERT INTO `posts` (`id_post`, `id_thread`, `id_user`, `content`, `post_date`) 
 (7, 7, 10, 'Soy investigador independiente y estas últimas semanas he estado siguiendo la pista de lo que muy probablemente sea el legendario Chupacabra en el pueblo de Springfield', '2024-04-05 11:19:07'),
 (8, 8, 6, 'Soy doctor, sé de lo que hablo...', '2024-04-05 11:22:05'),
 (9, 9, 9, '...la mayoría de los líderes mundiales están poseídos por fuerzas del averno', '2024-04-05 11:24:28'),
-(10, 10, 8, 'El problema de los tres cuerpos. No os parece que los aliens son muy idiotas??? Sus planes no tienen ningún sentido! Por qué avisan a los humanos de que les van a invadir??? Qué mal...', '2024-04-05 11:26:43');
+(10, 10, 8, 'El problema de los tres cuerpos. No os parece que los aliens son muy idiotas??? Sus planes no tienen ningún sentido! Por qué avisan a los humanos de que les van a invadir??? Qué mal...', '2024-04-05 11:26:43'),
+(11, 10, 5, 'En mis tiempos no existía Netflix, el único entretenimiento era escuchar a los juglares y trovadores recitar los cantares de gesta de la época', '2024-05-31 20:02:57'),
+(12, 5, 5, 'No-muerto?? Imposible, tales seres del averno solo tienen cabida en las fábulas y la imaginación de los niños y los necios', '2024-05-31 20:12:26'),
+(13, 5, 5, 'No-muerto?? Imposible, tales seres del averno solo tienen cabida en las fábulas y la imaginación de los niños y los necios', '2024-05-31 20:13:18'),
+(14, 7, 5, 'Esa criatura suena abominable! Si yo y mis valerosos francos estuviésemos en ese lugar de Springfield habríamos abatido a la bestia sin problemas.', '2024-05-31 20:14:45'),
+(15, 6, 5, 'Mis hijos también eran un desastre...', '2024-05-31 20:15:49'),
+(16, 9, 5, 'Doy fe de que mantengo mi cordura y sigo siendo fiel a Dios nuestro Señor', '2024-05-31 20:16:33');
 
 -- --------------------------------------------------------
 
@@ -96,12 +102,12 @@ CREATE TABLE `threads` (
 INSERT INTO `threads` (`id_thread`, `id_user`, `id_category`, `title`, `date_created`, `date_updated`, `posts`) VALUES
 (3, 3, 3, 'Algo huele a podrido en Huesca', '2024-02-02 22:55:31', '2024-02-02 22:55:31', 1),
 (4, 4, 5, 'Oficial del Pentágono confiesa todo', '2024-02-02 22:56:42', '2024-02-02 23:00:35', 2),
-(5, 5, 4, 'Creo que soy un no-muerto', '2024-02-02 22:58:27', '2024-02-02 22:59:42', 2),
-(6, 7, 6, 'Mi hijo no deja de ver vídeos perturbadores', '2024-04-05 11:17:19', '2024-04-05 11:17:19', 1),
-(7, 10, 3, 'El Chupacabra ataca de nuevo', '2024-04-05 11:19:07', '2024-04-05 11:19:07', 1),
+(5, 5, 4, 'Creo que soy un no-muerto', '2024-02-02 22:58:27', '2024-05-31 20:13:18', 4),
+(6, 7, 6, 'Mi hijo no deja de ver vídeos perturbadores', '2024-04-05 11:17:19', '2024-05-31 20:15:49', 2),
+(7, 10, 3, 'El Chupacabra ataca de nuevo', '2024-04-05 11:19:07', '2024-05-31 20:14:45', 2),
 (8, 6, 4, 'Han inventado un gas letal para eliminarnos', '2024-04-05 11:22:05', '2024-04-05 11:22:05', 1),
-(9, 9, 6, 'El establishment no quiere que sepas esto...', '2024-04-05 11:24:28', '2024-04-05 11:24:28', 1),
-(10, 8, 6, 'Qué opináis de la nueva serie de Netflix??', '2024-04-05 11:26:43', '2024-04-05 11:26:43', 1);
+(9, 9, 6, 'El establishment no quiere que sepas esto...', '2024-04-05 11:24:28', '2024-05-31 20:16:33', 2),
+(10, 8, 6, 'Qué opináis de la nueva serie de Netflix??', '2024-04-05 11:26:43', '2024-05-31 20:02:57', 2);
 
 -- --------------------------------------------------------
 
@@ -130,7 +136,8 @@ INSERT INTO `users` (`id_user`, `username`, `password`, `email`, `date_joined`, 
 (7, 'CatLover67', 'gervasio', 'aaaaaaah@gmail.com', '2024-04-05 11:09:13', 'usuario'),
 (8, 'Weirdo', 'camisetas9', 'justweirdo@hotmail.com', '2024-04-05 11:09:52', 'usuario'),
 (9, 'Diabolo', 'dant3', 'coolguy666@hotmail.com', '2024-04-05 11:10:28', 'usuario'),
-(10, 'Mr-X', 'mosquis', 'hsimpson@gmail.com', '2024-04-05 11:11:24', 'usuario');
+(10, 'Mr-X', 'mosquis', 'hsimpson@gmail.com', '2024-04-05 11:11:24', 'usuario'),
+(11, 'Martincito', 'republica', 'womblobombo@gmail.com', '2024-04-20 19:01:37', 'usuario');
 
 --
 -- Índices para tablas volcadas
@@ -178,19 +185,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `threads`
 --
 ALTER TABLE `threads`
-  MODIFY `id_thread` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_thread` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
