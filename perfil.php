@@ -70,6 +70,7 @@ $id_user = $_SESSION['id_user'];
                     <input type="password" name="n_password">
                     <br>
                     <br>
+                    <input type='hidden' name='n_id_user' value='<?php $id_user ?>'>
                     <input type="submit" value="Cambiar">
                 </form>
                 <br>
@@ -91,7 +92,7 @@ $id_user = $_SESSION['id_user'];
                 echo "<div class='bloque-lista'>";
                 echo "<div class='lista-titulo'><a href='hilo.php?id=" . $valor['id_thread'] . "'>" . $valor['content'] . "</a></div>";
                 echo "<div class='lista-detalles'>";
-                echo "<div><form action='del_post' method='post'><input type='hidden' name='del_id_post' value='" . $valor['id_post'] . "'><button type='submit' name='borrar'>Borrar post</button></form></div>";
+                echo "<div><form action='del_post.php' method='post'><input type='hidden' name='del_id_post' value='" . $valor['id_post'] . "'><button type='submit' name='borrar'>Borrar post</button></form></div>";
                 echo "<div>" . $valor['post_date'] . "</div>";
                 echo "</div>";
                 echo "</div>";
